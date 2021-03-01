@@ -54,67 +54,36 @@ const Marginer = styled.div`
 `
 
 export default function App() {
-  const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
-  const [translatedLanguage, setTranslatedLanguage] = useState<any>(undefined)
-  const [translations, setTranslations] = useState<Array<any>>([])
   const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
-  const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
-  const fileId = 6
 
-  const credentials: Credentials = {
+  const credentials: any = {
     token: apiKey,
   }
-
-  const stringTranslationsApi = new StringTranslations(credentials)
-
-  const fetchTranslationsForSelectedLanguage = async () => {
-    stringTranslationsApi
-      .listLanguageTranslations(projectId, selectedLanguage.code, undefined, fileId, 200)
-      .then((translationApiResponse) => {
-        if (translationApiResponse.data.length < 1) {
-          setTranslations(['error'])
-        } else {
-          setTranslations(translationApiResponse.data)
-        }
-      })
-      .then(() => setTranslatedLanguage(selectedLanguage))
-      .catch((error) => {
-        setTranslations(['error'])
-        console.error(error)
-      })
-  }
-
-  useEffect(() => {
-    if (selectedLanguage) {
-      fetchTranslationsForSelectedLanguage()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLanguage])
 
   return (
     <Suspense fallback={null}>
       <HashRouter>
         <AppWrapper>
-            <BodyWrapper>
-              <Popups />
-              <Web3ReactManager>
-                <Switch>
-                  <Route exact strict path="/swap" component={Swap} />
-                  <Route exact strict path="/find" component={PoolFinder} />
-                  <Route exact strict path="/pool" component={Pool} />
-                  <Route exact path="/add" component={AddLiquidity} />
-                  <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+          <BodyWrapper>
+            <Popups />
+            <Web3ReactManager>
+              <Switch>
+                <Route exact strict path="/swap" component={Swap} />
+                <Route exact strict path="/find" component={PoolFinder} />
+                <Route exact strict path="/pool" component={Pool} />
+                <Route exact path="/add" component={AddLiquidity} />
+                <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
 
-                  {/* Redirection: These old routes are still used in the code base */}
-                  <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
-                  <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
-                  <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
+                {/* Redirection: These old routes are still used in the code base */}
+                <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
+                <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
+                <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
 
-                  <Route component={RedirectPathToSwapOnly} />
-                </Switch>
-              </Web3ReactManager>
-              <Marginer />
-            </BodyWrapper>
+                <Route component={RedirectPathToSwapOnly} />
+              </Switch>
+            </Web3ReactManager>
+            <Marginer />
+          </BodyWrapper>
         </AppWrapper>
       </HashRouter>
     </Suspense>

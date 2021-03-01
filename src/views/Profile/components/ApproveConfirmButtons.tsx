@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ChevronRightIcon, Button as UIKitButton, Flex, AutoRenewIcon, ChevronDownIcon } from 'uikit'
-import useI18n from 'hooks/useI18n'
 
 interface ApproveConfirmButtonsProps {
   isApproveDisabled: boolean
@@ -49,8 +48,6 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
   onApprove,
   onConfirm,
 }) => {
-  const TranslateString = useI18n()
-
   return (
     <Flex py="8px" flexDirection={['column', null, 'row']} alignItems="center">
       <Button
@@ -59,7 +56,7 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
         endIcon={isApproving ? spinnerIcon : undefined}
         isLoading={isApproving}
       >
-        {isApproving ? TranslateString(800, 'Approving') : TranslateString(564, 'Approve')}
+        {isApproving ? 'Approving' : 'Approve'}
       </Button>
       <ChevronRight />
       <ChevronBottom />
@@ -69,7 +66,7 @@ const ApproveConfirmButtons: React.FC<ApproveConfirmButtonsProps> = ({
         isLoading={isConfirming}
         endIcon={isConfirming ? spinnerIcon : undefined}
       >
-        {isConfirming ? TranslateString(802, 'Confirming') : TranslateString(464, 'Confirm')}
+        {isConfirming ? 'Confirming' : 'Confirm'}
       </Button>
     </Flex>
   )

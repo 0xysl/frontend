@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { AutoRenewIcon, Button, Flex } from 'uikit'
 import { Achievement } from 'state/types'
 import { useToast } from 'state/hooks'
-import useI18n from 'hooks/useI18n'
+
 import { usePointCenterIfoContract } from 'hooks/useContract'
 import ActionColumn from '../ActionColumn'
 import PointsLabel from './PointsLabel'
@@ -40,7 +40,7 @@ const Body = styled(Flex)`
 
 const AchievementRow: React.FC<AchievementRowProps> = ({ achievement, onCollectSuccess }) => {
   const [isCollecting, setIsCollecting] = useState(false)
-  const TranslateString = useI18n()
+
   const pointCenterContract = usePointCenterIfoContract()
   const { account } = useWallet()
   const { toastError, toastSuccess } = useToast()
@@ -80,7 +80,7 @@ const AchievementRow: React.FC<AchievementRowProps> = ({ achievement, onCollectS
             disabled={isCollecting}
             variant="secondary"
           >
-            {TranslateString(999, 'Collect')}
+            {'Collect'}
           </Button>
         </ActionColumn>
       </Body>

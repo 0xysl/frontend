@@ -23,7 +23,6 @@ import SortButton from './SortButton'
 import { useTokenComparator } from './sorting'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
 import TranslatedText from '../TranslatedText'
-import { TranslateString } from '../../utils/translateTextHelpers'
 
 interface CurrencySearchProps {
   isOpen: boolean
@@ -143,10 +142,7 @@ export function CurrencySearch({
           <Text>
             <TranslatedText translationId={82}>Select a token</TranslatedText>
             <QuestionHelper
-              text={TranslateString(
-                130,
-                'Find a token by searching for its name or symbol or by pasting its address below.',
-              )}
+              text={'Find a token by searching for its name or symbol or by pasting its address below.'}
             />
           </Text>
           <CloseIcon onClick={onDismiss} />

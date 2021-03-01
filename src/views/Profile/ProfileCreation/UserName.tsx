@@ -20,7 +20,7 @@ import { parseISO, formatDistance } from 'date-fns'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { useToast } from 'state/hooks'
 import useWeb3 from 'hooks/useWeb3'
-import useI18n from 'hooks/useI18n'
+
 import useHasCakeBalance from 'hooks/useHasCakeBalance'
 import debounce from 'lodash/debounce'
 import ConfirmProfileCreationModal from '../components/ConfirmProfileCreationModal'
@@ -59,7 +59,7 @@ const Indicator = styled(Flex)`
 const UserName: React.FC = () => {
   const [isAcknowledged, setIsAcknoledged] = useState(false)
   const { teamId, tokenId, userName, actions, minimumCakeRequired, allowance } = useProfileCreation()
-  const TranslateString = useI18n()
+
   const { account, ethereum } = useWallet()
   const { toastError } = useToast()
   const web3 = useWeb3()
@@ -171,27 +171,23 @@ const UserName: React.FC = () => {
   return (
     <>
       <Text fontSize="20px" color="textSubtle" bold>
-        {TranslateString(999, `Step ${4}`)}
+        {`Step ${4}`}
       </Text>
       <Heading as="h3" size="xl" mb="24px">
-        {TranslateString(1110, 'Set Your Name')}
+        {'Set Your Name'}
       </Heading>
       <Text as="p" mb="24px">
-        {TranslateString(
-          999,
-          'This name will be shown in team leaderboards and search results as long as your profile is active.',
-        )}
+        {'This name will be shown in team leaderboards and search results as long as your profile is active.'}
       </Text>
       <Card mb="24px">
         <CardBody>
           <Heading as="h4" size="lg" mb="8px">
-            {TranslateString(1110, 'Set Your Name')}
+            {'Set Your Name'}
           </Heading>
           <Text as="p" color="textSubtle" mb="24px">
-            {TranslateString(
-              840,
-              'Your name must be at least 3 and at most 15 standard letters and numbers long. You can’t change this once you click Confirm.',
-            )}
+            {
+              'Your name must be at least 3 and at most 15 standard letters and numbers long. You can’t change this once you click Confirm.'
+            }
           </Text>
           {existingUserState === ExistingUserState.IDLE ? (
             <Skeleton height="40px" width="240px" />
@@ -204,7 +200,7 @@ const UserName: React.FC = () => {
                 minLength={USERNAME_MIN_LENGTH}
                 maxLength={USERNAME_MAX_LENGTH}
                 disabled={isUserCreated}
-                placeholder={TranslateString(1094, 'Enter your name...')}
+                placeholder={'Enter your name...'}
                 value={userName}
               />
               <Indicator>
@@ -218,32 +214,29 @@ const UserName: React.FC = () => {
             {message}
           </Text>
           <Text as="p" color="failure" mb="8px">
-            {TranslateString(
-              1100,
-              "Only reuse a name from other social media if you're OK with people viewing your wallet. You can't change your name once you click Confirm.",
-            )}
+            {
+              "Only reuse a name from other social media if you're OK with people viewing your wallet. You can't change your name once you click Confirm."
+            }
           </Text>
           <label htmlFor="checkbox" style={{ display: 'block', cursor: 'pointer', marginBottom: '24px' }}>
             <Flex alignItems="center">
               <div style={{ flex: 'none' }}>
                 <Checkbox id="checkbox" scale="sm" checked={isAcknowledged} onChange={handleAcknoledge} />
               </div>
-              <Text ml="8px">
-                {TranslateString(1096, 'I understand that people can view my wallet if they know my username')}
-              </Text>
+              <Text ml="8px">{'I understand that people can view my wallet if they know my username'}</Text>
             </Flex>
           </label>
           <Button onClick={handleConfirm} disabled={!isValid || isUserCreated || isLoading || !isAcknowledged}>
-            {TranslateString(464, 'Confirm')}
+            {'Confirm'}
           </Button>
         </CardBody>
       </Card>
       <Button onClick={onPresentConfirmProfileCreation} disabled={!isValid || !isUserCreated}>
-        {TranslateString(842, 'Complete Profile')}
+        {'Complete Profile'}
       </Button>
       {!hasMinimumCakeRequired && (
         <Text color="failure" mt="16px">
-          {TranslateString(1098, `A minimum of ${REGISTER_COST} CAKE is required`, { num: REGISTER_COST })}
+          {`A minimum of ${REGISTER_COST} CAKE is required`}
         </Text>
       )}
     </>

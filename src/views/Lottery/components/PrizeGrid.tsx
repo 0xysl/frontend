@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import useI18n from 'hooks/useI18n'
 import { Heading, Text } from 'uikit'
 
 export interface PrizeGridProps {
@@ -45,25 +44,24 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
   const threeMatchesAmount = +((lotteryPrizeAmount / 100) * 20).toFixed(0)
   const twoMatchesAmount = +((lotteryPrizeAmount / 100) * 10).toFixed(0)
   const burnAmount = +((lotteryPrizeAmount / 100) * 20).toFixed(0)
-  const TranslateString = useI18n()
 
   return (
     <Grid pastDraw={pastDraw}>
       <GridItem>
         <Text fontSize="14px" color="textSubtle">
-          {TranslateString(756, 'No. Matched')}
+          {'No. Matched'}
         </Text>
       </GridItem>
       {pastDraw && (
         <PastDrawGridItem>
           <RightAlignedText fontSize="14px" color="textSubtle">
-            {TranslateString(754, 'Winners')}
+            {'Winners'}
           </RightAlignedText>
         </PastDrawGridItem>
       )}
       <GridItem>
         <RightAlignedText fontSize="14px" color="textSubtle">
-          {TranslateString(752, 'Prize Pot')}
+          {'Prize Pot'}
         </RightAlignedText>
       </GridItem>
       {/* 4 matches row */}
@@ -104,7 +102,7 @@ const PrizeGrid: React.FC<PrizeGridProps> = ({
       </GridItem>
       {/* Burn row */}
       <GridItem marginBottom="0">
-        <Text>{TranslateString(999, `${pastDraw ? 'Burned' : 'To burn'}`)}:</Text>
+        <Text>{`${pastDraw ? 'Burned' : 'To burn'}`}:</Text>
       </GridItem>
       {pastDraw ? (
         <>

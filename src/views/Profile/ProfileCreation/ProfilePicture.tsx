@@ -4,7 +4,7 @@ import { AutoRenewIcon, Button, Card, CardBody, Heading, Skeleton, Text } from '
 import { Link as RouterLink } from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import nftList from 'config/constants/nfts'
-import useI18n from 'hooks/useI18n'
+
 import { useToast } from 'state/hooks'
 import { getPancakeProfileAddress } from 'utils/addressHelpers'
 import { usePancakeRabbits } from 'hooks/useContract'
@@ -25,7 +25,7 @@ const ProfilePicture: React.FC = () => {
   const [isApproved, setIsApproved] = useState(false)
   const [isApproving, setIsApproving] = useState(false)
   const { tokenId, actions } = useContext(ProfileCreationContext)
-  const TranslateString = useI18n()
+
   const { isLoading, nfts: nftsInWallet } = useGetWalletNfts()
   const pancakeRabbitsContract = usePancakeRabbits()
   const { account } = useWallet()
@@ -54,16 +54,15 @@ const ProfilePicture: React.FC = () => {
     return (
       <>
         <Heading size="xl" mb="24px">
-          {TranslateString(852, 'Oops!')}
+          {'Oops!'}
         </Heading>
         <Text bold fontSize="20px" mb="24px">
-          {TranslateString(854, 'We couldn’t find any Pancake Collectibles in your wallet.')}
+          {'We couldn’t find any Pancake Collectibles in your wallet.'}
         </Text>
         <Text as="p">
-          {TranslateString(
-            856,
-            'You need a Pancake Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
-          )}
+          {
+            'You need a Pancake Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.'
+          }
         </Text>
       </>
     )
@@ -72,26 +71,23 @@ const ProfilePicture: React.FC = () => {
   return (
     <>
       <Text fontSize="20px" color="textSubtle" bold>
-        {TranslateString(999, `Step ${2}`)}
+        {`Step ${2}`}
       </Text>
       <Heading as="h3" size="xl" mb="24px">
-        {TranslateString(778, 'Set Profile Picture')}
+        {'Set Profile Picture'}
       </Heading>
       <Card mb="24px">
         <CardBody>
           <Heading as="h4" size="lg" mb="8px">
-            {TranslateString(812, 'Choose collectible')}
+            {'Choose collectible'}
           </Heading>
           <Text as="p" color="textSubtle">
-            {TranslateString(
-              814,
-              'Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.',
-            )}
+            {'Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.'}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {TranslateString(816, 'Only approved Pancake Collectibles can be used.')}
+            {'Only approved Pancake Collectibles can be used.'}
             <Link to="/collectibles" style={{ marginLeft: '4px' }}>
-              {TranslateString(999, 'See the list >')}
+              {'See the list >'}
             </Link>
           </Text>
           <NftWrapper>
@@ -117,13 +113,12 @@ const ProfilePicture: React.FC = () => {
             )}
           </NftWrapper>
           <Heading as="h4" size="lg" mb="8px">
-            {TranslateString(818, 'Allow collectible to be locked')}
+            {'Allow collectible to be locked'}
           </Heading>
           <Text as="p" color="textSubtle" mb="16px">
-            {TranslateString(
-              820,
-              "The collectible you've chosen will be locked in a smart contract while it’s being used as your profile picture. Don't worry - you'll be able to get it back at any time.",
-            )}
+            {
+              "The collectible you've chosen will be locked in a smart contract while it’s being used as your profile picture. Don't worry - you'll be able to get it back at any time."
+            }
           </Text>
           <Button
             isLoading={isApproving}
@@ -131,12 +126,12 @@ const ProfilePicture: React.FC = () => {
             onClick={handleApprove}
             endIcon={isApproving ? <AutoRenewIcon spin color="currentColor" /> : undefined}
           >
-            {TranslateString(564, 'Approve')}
+            {'Approve'}
           </Button>
         </CardBody>
       </Card>
       <NextStepButton onClick={actions.nextStep} disabled={tokenId === null || !isApproved || isApproving}>
-        {TranslateString(798, 'Next Step')}
+        {'Next Step'}
       </NextStepButton>
     </>
   )

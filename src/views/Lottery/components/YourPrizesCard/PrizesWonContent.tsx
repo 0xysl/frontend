@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 import { Button, Heading, Won, useModal } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useMultiClaimLottery } from 'hooks/useBuyLottery'
 import useTickets, { useTotalClaim } from 'hooks/useTickets'
@@ -40,7 +40,7 @@ const StyledButton = styled(Button)`
 
 const PrizesWonContent: React.FC = () => {
   const [requestedClaim, setRequestedClaim] = useState(false)
-  const TranslateString = useI18n()
+
   const { claimLoading, claimAmount } = useTotalClaim()
   const { onMultiClaim } = useMultiClaimLottery()
   const tickets = useTickets()
@@ -67,7 +67,7 @@ const PrizesWonContent: React.FC = () => {
         <Won />
       </IconWrapper>
       <Heading as="h3" size="lg" color="secondary">
-        {TranslateString(660, 'You won!')}
+        {'You won!'}
       </Heading>
       {claimLoading && <Loading />}
       {!claimLoading && (
@@ -84,11 +84,11 @@ const PrizesWonContent: React.FC = () => {
       )}
       <StyledCardActions>
         <Button fullWidth disabled={requestedClaim} onClick={handleClaim}>
-          {TranslateString(1056, 'Collect')}
+          {'Collect'}
         </Button>
       </StyledCardActions>
       <StyledButton variant="text" onClick={onPresentMyTickets}>
-        {TranslateString(432, 'View your tickets')}
+        {'View your tickets'}
       </StyledButton>
     </StyledCardContentInner>
   )

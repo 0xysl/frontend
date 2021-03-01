@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex, Heading } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import { useAchievements } from 'state/hooks'
 import AchievementCard from './AchievementCard'
 
@@ -16,7 +16,6 @@ const Grid = styled.div`
 `
 
 const AchievementsList = () => {
-  const TranslateString = useI18n()
   const achievements = useAchievements()
 
   return (
@@ -29,7 +28,7 @@ const AchievementsList = () => {
       {achievements.length === 0 && (
         <Flex alignItems="center" justifyContent="center" style={{ height: '64px' }}>
           <Heading as="h5" size="md" color="textDisabled">
-            {TranslateString(999, 'No achievements yet!')}
+            {'No achievements yet!'}
           </Heading>
         </Flex>
       )}

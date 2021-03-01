@@ -7,7 +7,7 @@ import { Heading } from 'uikit'
 import { BLOCKS_PER_YEAR } from 'config'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
-import useI18n from 'hooks/useI18n'
+
 import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useFarms, usePriceBnbBusd, usePools, usePriceEthBnb } from 'state/hooks'
@@ -21,7 +21,7 @@ import Divider from './components/Divider'
 
 const Farm: React.FC = () => {
   const { path } = useRouteMatch()
-  const TranslateString = useI18n()
+
   const { account } = useWallet()
   const farms = useFarms()
   const pools = usePools(account)
@@ -81,12 +81,12 @@ const Farm: React.FC = () => {
       <Hero>
         <div>
           <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(738, 'Syrup Pool')}
+            {'Syrup Pool'}
           </Heading>
           <ul>
-            <li>{TranslateString(580, 'Stake CAKE to earn new tokens.')}</li>
-            <li>{TranslateString(486, 'You can unstake at any time.')}</li>
-            <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
+            <li>{'Stake CAKE to earn new tokens.'}</li>
+            <li>{'You can unstake at any time.'}</li>
+            <li>{'Rewards are calculated per block.'}</li>
           </ul>
         </div>
         <img src="/images/syrup.png" alt="SYRUP POOL icon" width={410} height={191} />

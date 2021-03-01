@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Image, Card, CardBody } from 'uikit'
 import { useWinningNumbers, useMatchingRewardLength } from 'hooks/useTickets'
-import useI18n from 'hooks/useI18n'
+
 import useGetLotteryHasDrawn from 'hooks/useGetLotteryHasDrawn'
 
 const WinningNumbers: React.FC = () => {
@@ -13,7 +13,6 @@ const WinningNumbers: React.FC = () => {
   const MatchedNumber4 = useMatchingRewardLength(4)
   const MatchedNumber3 = useMatchingRewardLength(3)
   const MatchedNumber2 = useMatchingRewardLength(2)
-  const TranslateString = useI18n()
 
   return (
     <CardWrapper>
@@ -22,9 +21,7 @@ const WinningNumbers: React.FC = () => {
           <StyledCardContentInner>
             <StyledCardHeader>
               <Title>
-                {account && lotteryHasDrawn
-                  ? `🥳${TranslateString(570, 'Winning Numbers This Round')}🥳`
-                  : TranslateString(572, 'Latest Winning Numbers')}
+                {account && lotteryHasDrawn ? `🥳${'Winning Numbers This Round'}🥳` : 'Latest Winning Numbers'}
               </Title>
               <br />
             </StyledCardHeader>
@@ -82,26 +79,26 @@ const WinningNumbers: React.FC = () => {
             </RabbitRowSmall>
             <Column>
               <RowNoPadding>
-                <CenteredTextWithPadding>{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
+                <CenteredTextWithPadding>{'Tickets matching 4 numbers:'}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber4}</strong>
                 </CenteredTextWithPadding>
               </RowNoPadding>
               <RowNoPadding>
-                <CenteredTextWithPadding>{TranslateString(444, 'Tickets matching 3 numbers:')}</CenteredTextWithPadding>
+                <CenteredTextWithPadding>{'Tickets matching 3 numbers:'}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber3}</strong>
                 </CenteredTextWithPadding>
               </RowNoPadding>
               <RowNoPadding>
-                <CenteredTextWithPadding>{TranslateString(446, 'Tickets matching 2 numbers:')}</CenteredTextWithPadding>
+                <CenteredTextWithPadding>{'Tickets matching 2 numbers:'}</CenteredTextWithPadding>
                 <CenteredTextWithPadding>
                   <strong>{MatchedNumber2}</strong>
                 </CenteredTextWithPadding>
               </RowNoPadding>
             </Column>
             <Link href="https://api.pancakeswap.com/api/lottery?page=0&pageSize=25" target="_blank">
-              {TranslateString(448, 'Export recent winning numbers')}
+              {'Export recent winning numbers'}
             </Link>
           </StyledCardContentInner>
         </CardBody>

@@ -64,7 +64,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
       <Flex alignItems="center" style={{ height: '48px' }} justifyContent="center">
         <Text as="p" color="failure">
           {!hasMinimumCakeRequired &&
-            {`${getFullDisplayBalance(numberCakeToUpdate)} CAKE required to change profile pic`}
+            `${getFullDisplayBalance(numberCakeToUpdate)} CAKE required to change profile pic`}
         </Text>
       </Flex>
       {profile.isActive ? (
@@ -77,7 +77,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
           >
             {'Change Profile Pic'}
           </Button>
-          <DangerOutline onClick={goToRemove}>{TranslateString(999, 'Remove Profile Pic')}</DangerOutline>
+          <DangerOutline onClick={goToRemove}>{'Remove Profile Pic'}</DangerOutline>
         </>
       ) : (
         <Button

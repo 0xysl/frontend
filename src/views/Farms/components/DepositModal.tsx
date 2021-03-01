@@ -3,7 +3,6 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Button, Modal, LinkExternal } from 'uikit'
 import ModalActions from 'components/ModalActions'
 import ModalInput from 'components/ModalInput'
-import useI18n from 'hooks/useI18n'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 
 interface DepositModalProps {
@@ -17,7 +16,6 @@ interface DepositModalProps {
 const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, tokenName = '', addLiquidityUrl }) => {
   const [val, setVal] = useState('')
   const [pendingTx, setPendingTx] = useState(false)
-  const TranslateString = useI18n()
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max)
   }, [max])
@@ -34,7 +32,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }, [fullBalance, setVal])
 
   return (
-    <Modal title={TranslateString(1068, 'Stake LP tokens')} onDismiss={onDismiss}>
+    <Modal title={'Stake LP tokens'} onDismiss={onDismiss}>
       <ModalInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -42,11 +40,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
         max={fullBalance}
         symbol={tokenName}
         addLiquidityUrl={addLiquidityUrl}
-        inputTitle={TranslateString(1070, 'Stake')}
+        inputTitle={'Stake'}
       />
       <ModalActions>
         <Button variant="secondary" onClick={onDismiss} fullWidth>
-          {TranslateString(462, 'Cancel')}
+          {'Cancel'}
         </Button>
         <Button
           fullWidth
@@ -58,11 +56,11 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
             onDismiss()
           }}
         >
-          {pendingTx ? TranslateString(488, 'Pending Confirmation') : TranslateString(464, 'Confirm')}
+          {pendingTx ? 'Pending Confirmation' : 'Confirm'}
         </Button>
       </ModalActions>
       <LinkExternal href={addLiquidityUrl} style={{ alignSelf: 'center' }}>
-        {TranslateString(999, 'Get')} {tokenName}
+        {'Get'} {tokenName}
       </LinkExternal>
     </Modal>
   )

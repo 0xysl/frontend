@@ -1,6 +1,6 @@
 import React from 'react'
 import { InjectedModalProps, Modal } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import useEditProfile, { Views } from './reducer'
 import StartView from './StartView'
 import PauseProfileView from './PauseProfileView'
@@ -18,14 +18,14 @@ const viewTitle = {
 
 const EditProfileModal: React.FC<EditProfileModalProps> = ({ onDismiss }) => {
   const { currentView, goToChange, goToRemove, goToApprove, goPrevious } = useEditProfile()
-  const TranslateString = useI18n()
+
   const { id, label } = viewTitle[currentView]
 
   const isStartView = currentView === Views.START
   const handleBack = isStartView ? null : () => goPrevious()
 
   return (
-    <Modal title={TranslateString(id, label)} onBack={handleBack} onDismiss={onDismiss} hideCloseButton={!isStartView}>
+    <Modal title={label} onBack={handleBack} onDismiss={onDismiss} hideCloseButton={!isStartView}>
       <div style={{ maxWidth: '400px' }}>
         {currentView === Views.START && (
           <StartView goToApprove={goToApprove} goToChange={goToChange} goToRemove={goToRemove} onDismiss={onDismiss} />

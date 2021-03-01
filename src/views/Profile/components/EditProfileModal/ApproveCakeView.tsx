@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import { useCake } from 'hooks/useContract'
 import { useProfile, useToast } from 'state/hooks'
 import { getPancakeProfileAddress } from 'utils/addressHelpers'
@@ -16,7 +16,7 @@ interface ApproveCakePageProps extends InjectedModalProps {
 const ApproveCakePage: React.FC<ApproveCakePageProps> = ({ goToChange, onDismiss }) => {
   const [isApproving, setIsApproving] = useState(false)
   const { profile } = useProfile()
-  const TranslateString = useI18n()
+
   const { account } = useWallet()
   const { numberCakeToUpdate, numberCakeToReactivate } = useGetProfileCosts()
   const cakeContract = useCake()
@@ -46,10 +46,8 @@ const ApproveCakePage: React.FC<ApproveCakePageProps> = ({ goToChange, onDismiss
   return (
     <Flex flexDirection="column">
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
-        <Text>
-          {profile.isActive ? TranslateString(999, 'Cost to update:') : TranslateString(999, 'Cost to reactivate:')}
-        </Text>
-        <Text>{TranslateString(999, `${getFullDisplayBalance(cost)} CAKE`)}</Text>
+        <Text>{profile.isActive ? 'Cost to update:' : 'Cost to reactivate:'}</Text>
+        <Text>{`${getFullDisplayBalance(cost)} CAKE`}</Text>
       </Flex>
       <Button
         disabled={isApproving}
@@ -59,10 +57,10 @@ const ApproveCakePage: React.FC<ApproveCakePageProps> = ({ goToChange, onDismiss
         mb="8px"
         onClick={handleApprove}
       >
-        {TranslateString(999, 'Approve')}
+        {'Approve'}
       </Button>
       <Button variant="text" fullWidth onClick={onDismiss} disabled={isApproving}>
-        {TranslateString(999, 'Close Window')}
+        {'Close Window'}
       </Button>
     </Flex>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Heading, Text, Flex, ChevronRightIcon } from 'uikit'
 import { Link } from 'react-router-dom'
-import useI18n from 'hooks/useI18n'
+
 import nfts from 'config/constants/nfts'
 import useGetWalletNfts from 'hooks/useGetWalletNfts'
 import styled from 'styled-components'
@@ -29,7 +29,6 @@ const CollectibleList = styled.div`
 `
 
 const Collectibles = () => {
-  const TranslateString = useI18n()
   const { nfts: tokenIdsInWallet } = useGetWalletNfts()
   const bunnyIds = Object.keys(tokenIdsInWallet).map((nftWalletItem) => Number(nftWalletItem))
   const nftsInWallet = nfts.filter((nft) => bunnyIds.includes(nft.bunnyId))
@@ -37,20 +36,12 @@ const Collectibles = () => {
   return (
     <>
       <Heading as="h4" size="md" mb="8px">
-        {TranslateString(999, 'Pancake Collectibles')}
+        {'Pancake Collectibles'}
       </Heading>
       <Text as="p">
-        {TranslateString(
-          999,
-          'Pancake Collectibles are special ERC-721 NFTs that can be used on the PancakeSwap platform.',
-        )}
+        {'Pancake Collectibles are special ERC-721 NFTs that can be used on the PancakeSwap platform.'}
       </Text>
-      <Text as="p">
-        {TranslateString(
-          999,
-          "NFTs in this user's wallet that aren't approved Pancake Collectibles won't be shown here.",
-        )}
-      </Text>
+      <Text as="p">{"NFTs in this user's wallet that aren't approved Pancake Collectibles won't be shown here."}</Text>
       {nftsInWallet.length > 0 && (
         <CollectibleList>
           {nftsInWallet.map((nftInWallet) => (
@@ -61,12 +52,12 @@ const Collectibles = () => {
       {nftsInWallet.length === 0 && (
         <Flex justifyContent="center" p="32px">
           <Text fontSize="20px" bold color="textDisabled">
-            {TranslateString(999, 'No NFTs Found')}
+            {'No NFTs Found'}
           </Text>
         </Flex>
       )}
       <Flex alignItems="center" justifyContent="flex-end">
-        <Link to="/collectibles">{TranslateString(999, 'See all approved Pancake Collectibles')}</Link>
+        <Link to="/collectibles">{'See all approved Pancake Collectibles'}</Link>
         <ChevronRightIcon />
       </Flex>
     </>

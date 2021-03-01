@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { Heading, Card, CardBody, Button } from 'uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import useI18n from 'hooks/useI18n'
 import { useAllHarvest } from 'hooks/useHarvest'
 import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import UnlockButton from 'components/UnlockButton'
@@ -36,7 +35,6 @@ const Actions = styled.div`
 const FarmedStakingCard = () => {
   const [pendingTx, setPendingTx] = useState(false)
   const { account } = useWallet()
-  const TranslateString = useI18n()
   const farmsWithBalance = useFarmsWithBalance()
   const balancesWithValue = farmsWithBalance.filter((balanceType) => balanceType.balance.toNumber() > 0)
 
@@ -57,15 +55,15 @@ const FarmedStakingCard = () => {
     <StyledFarmStakingCard>
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(542, 'Farms & Staking')}
+          {'Farms & Staking'}
         </Heading>
         <CardImage src="/images/cake.svg" alt="cake logo" width={64} height={64} />
         <Block>
-          <Label>{TranslateString(544, 'CAKE to Harvest')}:</Label>
+          <Label>{'CAKE to Harvest'}:</Label>
           <CakeHarvestBalance />
         </Block>
         <Block>
-          <Label>{TranslateString(546, 'CAKE in Wallet')}:</Label>
+          <Label>{'CAKE in Wallet'}:</Label>
           <CakeWalletBalance />
         </Block>
         <Actions>
@@ -76,9 +74,7 @@ const FarmedStakingCard = () => {
               onClick={harvestAllFarms}
               fullWidth
             >
-              {pendingTx
-                ? TranslateString(548, 'Collecting CAKE')
-                : TranslateString(532, `Harvest all (${balancesWithValue.length})`)}
+              {pendingTx ? 'Collecting CAKE' : `Harvest all (${balancesWithValue.length})`}
             </Button>
           ) : (
             <UnlockButton fullWidth />

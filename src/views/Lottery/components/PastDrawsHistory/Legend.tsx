@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,17 +22,15 @@ const Circle = styled.div<{ isPoolSize?: boolean }>`
 `
 
 const Legend = () => {
-  const TranslateString = useI18n()
-
   return (
     <Wrapper>
       <LegendItem>
         <Circle isPoolSize />
-        <Text>{TranslateString(748, 'Pool Size')}</Text>
+        <Text>{'Pool Size'}</Text>
       </LegendItem>
       <LegendItem>
         <Circle />
-        <Text>{TranslateString(750, 'Burned')}</Text>
+        <Text>{'Burned'}</Text>
       </LegendItem>
     </Wrapper>
   )

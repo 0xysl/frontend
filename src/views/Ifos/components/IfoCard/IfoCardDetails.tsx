@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { Text, LinkExternal, Link } from 'uikit'
-import useI18n from 'hooks/useI18n'
 
 export interface IfoCardDetailsProps {
   launchDate: string
@@ -39,13 +38,11 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
   raisingAmount,
   totalAmount,
 }) => {
-  const TranslateString = useI18n()
-
   return (
     <>
       <StyledIfoCardDetails>
         <Item>
-          <Display>{TranslateString(582, 'Launch Time')}</Display>
+          <Display>{'Launch Time'}</Display>
           <Text>
             {launchDate},
             <Link
@@ -60,24 +57,24 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({
           </Text>
         </Item>
         <Item>
-          <Display>{TranslateString(584, 'For Sale')}</Display>
+          <Display>{'For Sale'}</Display>
           <Text>{saleAmount}</Text>
         </Item>
         <Item>
-          <Display>{TranslateString(999, 'To raise (USD)')}</Display>
+          <Display>{'To raise (USD)'}</Display>
           <Text>{raiseAmount}</Text>
         </Item>
         <Item>
-          <Display>{TranslateString(586, 'CAKE to burn (USD)')}</Display>
+          <Display>{'CAKE to burn (USD)'}</Display>
           <Text>{cakeToBurn}</Text>
         </Item>
         <Item>
-          <Display>{TranslateString(999, 'Total raised (% of target)')}</Display>
+          <Display>{'Total raised (% of target)'}</Display>
           <Text>{`${totalAmount.div(raisingAmount).times(100).toFixed(2)}%`}</Text>
         </Item>
       </StyledIfoCardDetails>
       <LinkExternal href={projectSiteUrl} style={{ margin: 'auto' }}>
-        {TranslateString(412, 'View project site')}
+        {'View project site'}
       </LinkExternal>
     </>
   )

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Text, Input, Button } from 'uikit'
-import useI18n from 'hooks/useI18n'
 
 interface PastLotterySearcherProps {
   initialLotteryNumber: number
@@ -27,7 +26,6 @@ const ButtonWrapper = styled.div`
 const PastLotterySearcher: React.FC<PastLotterySearcherProps> = ({ initialLotteryNumber, onSubmit }) => {
   const [lotteryNumber, setLotteryNumber] = useState(initialLotteryNumber)
   const [isError, setIsError] = useState(false)
-  const TranslateString = useI18n()
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
@@ -45,7 +43,7 @@ const PastLotterySearcher: React.FC<PastLotterySearcherProps> = ({ initialLotter
 
   return (
     <Wrapper>
-      <Text>{TranslateString(742, 'Select lottery number:')}</Text>
+      <Text>{'Select lottery number:'}</Text>
       <form onSubmit={handleSubmit}>
         <SearchWrapper>
           <Input
@@ -57,7 +55,7 @@ const PastLotterySearcher: React.FC<PastLotterySearcherProps> = ({ initialLotter
           />
           <ButtonWrapper>
             <Button type="submit" size="sm" disabled={isError}>
-              {TranslateString(744, 'Search')}
+              {'Search'}
             </Button>
           </ButtonWrapper>
         </SearchWrapper>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Flex, Text } from 'uikit'
 import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
-import useI18n from 'hooks/useI18n'
+
 import { useCake, usePancakeRabbits, useProfile } from 'hooks/useContract'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { fetchProfile } from 'state/profile'
@@ -28,7 +28,6 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   allowance,
   onDismiss,
 }) => {
-  const TranslateString = useI18n()
   const profileContract = useProfile()
   const pancakeRabbitsContract = usePancakeRabbits()
   const dispatch = useDispatch()
@@ -70,11 +69,11 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   return (
     <Modal title="Complete Profile" onDismiss={onDismiss}>
       <Text color="textSubtle" mb="8px">
-        {TranslateString(999, 'Submitting NFT to contract and confirming User Name and Team.')}
+        {'Submitting NFT to contract and confirming User Name and Team.'}
       </Text>
       <Flex justifyContent="space-between" mb="16px">
-        <Text>{TranslateString(999, 'Cost')}</Text>
-        <Text>{TranslateString(999, `${REGISTER_COST} CAKE`, { num: REGISTER_COST })}</Text>
+        <Text>{'Cost'}</Text>
+        <Text>{`${REGISTER_COST} CAKE`}</Text>
       </Flex>
       <ApproveConfirmButtons
         isApproveDisabled={isConfirmed || isConfirming || isApproved}

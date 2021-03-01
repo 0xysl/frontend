@@ -12,14 +12,12 @@ import { useFarms, usePriceBnbBusd, usePriceCakeBusd, usePriceEthBusd } from 'st
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
-import useI18n from 'hooks/useI18n'
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import FarmTabButtons from './components/FarmTabButtons'
 import Divider from './components/Divider'
 
 const Farms: React.FC = () => {
   const { path } = useRouteMatch()
-  const TranslateString = useI18n()
   const farmsLP = useFarms()
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
@@ -97,7 +95,7 @@ const Farms: React.FC = () => {
   return (
     <Page>
       <Heading as="h1" size="lg" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(696, 'Stake LP tokens to earn CAKE')}
+        {'Stake LP tokens to earn CAKE'}
       </Heading>
       <FarmTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
       <div>

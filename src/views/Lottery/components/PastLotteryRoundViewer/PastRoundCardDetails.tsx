@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading, CardBody, CardFooter, PancakeRoundIcon, TicketRound } from 'uikit'
-import useI18n from 'hooks/useI18n'
 import { DataResponse } from 'utils/getLotteryRoundData'
 import LotteryCardHeading from '../LotteryCardHeading'
 import PastLotteryActions from './PastLotteryActions'
@@ -24,8 +23,6 @@ const TopLotteryCardHeading = styled(LotteryCardHeading)`
 `
 
 const PastRoundCardDetails: React.FC<PastRoundCardDetailsProps> = ({ data }) => {
-  const TranslateString = useI18n()
-
   const {
     contractLink,
     jackpotTicket,
@@ -52,13 +49,10 @@ const PastRoundCardDetails: React.FC<PastRoundCardDetailsProps> = ({ data }) => 
               valueToDisplay={`${lotteryNumbers[0]}, ${lotteryNumbers[1]}, ${lotteryNumbers[2]}, ${lotteryNumbers[3]}`}
               Icon={TicketRound}
             >
-              {TranslateString(999, 'Winning numbers')}
+              {'Winning numbers'}
             </TopLotteryCardHeading>
-            <LotteryCardHeading
-              valueToDisplay={TranslateString(999, `${poolSize.toLocaleString()} CAKE`)}
-              Icon={PancakeRoundIcon}
-            >
-              {TranslateString(999, 'Total prizes')}
+            <LotteryCardHeading valueToDisplay={`${poolSize.toLocaleString()} CAKE`} Icon={PancakeRoundIcon}>
+              {'Total prizes'}
             </LotteryCardHeading>
           </CardHeading>
         </CardBody>

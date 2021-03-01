@@ -7,7 +7,6 @@ import { getClaimRefundAddress } from 'utils/addressHelpers'
 import { getContract } from 'utils/web3'
 import { useToast } from 'state/hooks'
 import useContract from 'hooks/useContract'
-import useI18n from 'hooks/useI18n'
 
 interface ClaimGiftProps extends InjectedModalProps {
   onSuccess: () => void
@@ -47,7 +46,7 @@ const useClaimRefundContract = () => {
 const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
   const [isConfirming, setIsConfirming] = useState(false)
   const { account } = useWallet()
-  const TranslateString = useI18n()
+
   const { canClaim } = useCanClaim()
   const claimRefundContract = useClaimRefundContract()
   const { toastSuccess, toastError } = useToast()
@@ -71,29 +70,22 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
   }
 
   return (
-    <Modal title={TranslateString(999, 'Claim your Gift!')} onDismiss={onDismiss}>
+    <Modal title={'Claim your Gift!'} onDismiss={onDismiss}>
       <div style={{ maxWidth: '640px' }}>
-        <Text as="p">{TranslateString(999, 'Thank you for being a day-one user of Pancake Profiles!')}</Text>
+        <Text as="p">{'Thank you for being a day-one user of Pancake Profiles!'}</Text>
         <Text as="p" mb="8px">
-          {TranslateString(
-            999,
-            "If you haven't already noticed, we made a mistake and the starter bunny you chose got mixed up and changed into another bunny. Oops!",
-          )}
+          {
+            "If you haven't already noticed, we made a mistake and the starter bunny you chose got mixed up and changed into another bunny. Oops!"
+          }
         </Text>
-        <Text as="p">
-          {TranslateString(999, "To make it up to you, we'll refund you the full 4 CAKE it cost to make your bunny.")}
-        </Text>
+        <Text as="p">{"To make it up to you, we'll refund you the full 4 CAKE it cost to make your bunny."}</Text>
         <Text as="p" mb="8px">
-          {TranslateString(
-            999,
-            "We're also preparing an all-new collectible for you to claim (for free!) in the near future.",
-          )}
+          {"We're also preparing an all-new collectible for you to claim (for free!) in the near future."}
         </Text>
         <Text as="p" mb="24px">
-          {TranslateString(
-            999,
-            'Once you claim the refund, you can make another account with another wallet, mint a new bunny, and send it to your main account via the NFT page.',
-          )}
+          {
+            'Once you claim the refund, you can make another account with another wallet, mint a new bunny, and send it to your main account via the NFT page.'
+          }
         </Text>
         <Button
           endIcon={isConfirming ? <AutoRenewIcon spin color="currentColor" /> : null}
@@ -101,7 +93,7 @@ const ClaimGift: React.FC<ClaimGiftProps> = ({ onSuccess, onDismiss }) => {
           onClick={handleClick}
           disabled={!canClaim}
         >
-          {TranslateString(999, 'Claim Your CAKE')}
+          {'Claim Your CAKE'}
         </Button>
       </div>
     </Modal>

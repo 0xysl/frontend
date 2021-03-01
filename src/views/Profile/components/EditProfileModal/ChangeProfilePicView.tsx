@@ -4,7 +4,7 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { useDispatch } from 'react-redux'
 import nftList from 'config/constants/nfts'
 import { useProfile, useToast } from 'state/hooks'
-import useI18n from 'hooks/useI18n'
+
 import { fetchProfile } from 'state/profile'
 import useGetWalletNfts from 'hooks/useGetWalletNfts'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
@@ -17,7 +17,7 @@ type ChangeProfilePicPageProps = InjectedModalProps
 
 const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }) => {
   const [tokenId, setTokenId] = useState(null)
-  const TranslateString = useI18n()
+
   const { isLoading, nfts: nftsInWallet } = useGetWalletNfts()
   const dispatch = useDispatch()
   const { profile } = useProfile()
@@ -57,7 +57,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
   return (
     <>
       <Text as="p" color="textSubtle" mb="24px">
-        {TranslateString(999, 'Choose a new Collectible to use as your profile pic.')}
+        {'Choose a new Collectible to use as your profile pic.'}
       </Text>
       {isLoading ? (
         <Skeleton height="80px" mb="16px" />
@@ -83,10 +83,10 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
       {!isLoading && walletNfts.length === 0 && (
         <>
           <Text as="p" color="textSubtle" mb="16px">
-            {TranslateString(999, 'Sorry! You don’t have any eligible Collectibles in your wallet to use!')}
+            {'Sorry! You don’t have any eligible Collectibles in your wallet to use!'}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {TranslateString(999, 'Make sure you have a Pancake Collectible in your wallet and try again!')}
+            {'Make sure you have a Pancake Collectible in your wallet and try again!'}
           </Text>
         </>
       )}
@@ -99,7 +99,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
         onConfirm={handleConfirm}
       />
       <Button variant="text" fullWidth onClick={onDismiss} disabled={isApproving || isConfirming}>
-        {TranslateString(999, 'Close Window')}
+        {'Close Window'}
       </Button>
     </>
   )

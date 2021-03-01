@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Card, CardBody } from 'uikit'
 import getLotteryRoundData from 'utils/getLotteryRoundData'
-import useI18n from 'hooks/useI18n'
 import PastLotterySearcher from './PastLotterySearcher'
 import PastRoundCard from './PastRoundCard'
 import Loading from '../Loading'
@@ -28,7 +27,6 @@ const PastLotteryRoundViewer = () => {
     isLoading: true,
   })
   const { data: initialLotteryData, mostRecentLotteryNumber } = useGetRecentLotteryRoundData()
-  const TranslateString = useI18n()
   const { roundData, error, isInitialized, isLoading } = state
 
   useEffect(() => {
@@ -49,7 +47,7 @@ const PastLotteryRoundViewer = () => {
           setState((prevState) => ({
             ...prevState,
             error: {
-              message: TranslateString(1076, 'The lottery number you provided does not exist'),
+              message: 'The lottery number you provided does not exist',
               type: 'out of range',
             },
             isLoading: false,
@@ -68,7 +66,7 @@ const PastLotteryRoundViewer = () => {
       .catch(() => {
         setState((prevState) => ({
           ...prevState,
-          error: { message: TranslateString(1078, 'Error fetching data'), type: 'api' },
+          error: { message: 'Error fetching data', type: 'api' },
           isLoading: false,
           isInitialized: true,
         }))

@@ -6,7 +6,6 @@ import { Card, CardBody, CardRibbon } from 'uikit'
 import { BSC_BLOCK_TIME } from 'config'
 import { Ifo, IfoStatus } from 'config/constants/types'
 import makeBatchRequest from 'utils/makeBatchRequest'
-import useI18n from 'hooks/useI18n'
 import useBlock from 'hooks/useBlock'
 import { useIfoContract } from 'hooks/useContract'
 import UnlockButton from 'components/UnlockButton'
@@ -48,13 +47,13 @@ const getStatus = (currentBlock: number, startBlock: number, endBlock: number): 
   return null
 }
 
-const getRibbonComponent = (status: IfoStatus, TranslateString: (translationId: number, fallback: string) => any) => {
+const getRibbonComponent = (status: IfoStatus) => {
   if (status === 'coming_soon') {
-    return <CardRibbon variantColor="textDisabled" text={TranslateString(999, 'Coming Soon')} />
+    return <CardRibbon variantColor="textDisabled" text={'Coming Soon'} />
   }
 
   if (status === 'live') {
-    return <CardRibbon variantColor="primary" text={TranslateString(999, 'LIVE NOW!')} />
+    return <CardRibbon variantColor="primary" text={'LIVE NOW!'} />
   }
 
   return null
@@ -94,9 +93,8 @@ const IfoCard: React.FC<IfoCardProps> = ({ ifo }) => {
   const contract = useIfoContract(address)
 
   const currentBlock = useBlock()
-  const TranslateString = useI18n()
 
-  const Ribbon = getRibbonComponent(state.status, TranslateString)
+  const Ribbon = getRibbonComponent(state.status)
 
   useEffect(() => {
     const fetchProgress = async () => {

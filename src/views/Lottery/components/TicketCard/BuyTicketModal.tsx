@@ -6,7 +6,6 @@ import { getFullDisplayBalance } from 'utils/formatBalance'
 import TicketInput from 'components/TicketInput'
 import ModalActions from 'components/ModalActions'
 import { useMultiBuyLottery, useMaxNumber } from 'hooks/useBuyLottery'
-import useI18n from 'hooks/useI18n'
 import { LOTTERY_MAX_NUMBER_OF_TICKETS, LOTTERY_TICKET_PRICE } from 'config'
 
 interface BuyTicketModalProps {
@@ -20,7 +19,6 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
   const [val, setVal] = useState('1')
   const [pendingTx, setPendingTx] = useState(false)
   const [, setRequestedBuy] = useState(false)
-  const TranslateString = useI18n()
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max)
   }, [max])
@@ -67,7 +65,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
     return +amount * LOTTERY_TICKET_PRICE
   }
   return (
-    <Modal title={TranslateString(450, 'Enter amount of tickets to buy')} onDismiss={onDismiss}>
+    <Modal title={'Enter amount of tickets to buy'} onDismiss={onDismiss}>
       <TicketInput
         value={val}
         onSelectMax={handleSelectMax}
@@ -77,20 +75,15 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         availableSymbol="CAKE"
       />
       <div>
-        <Tips>{TranslateString(999, `1 Ticket = ${LOTTERY_TICKET_PRICE} CAKE`, { num: LOTTERY_TICKET_PRICE })}</Tips>
+        <Tips>{`1 Ticket = ${LOTTERY_TICKET_PRICE} CAKE { num: LOTTERY_TICKET_PRICE }`}</Tips>
       </div>
       <div>
-        <Announce>
-          {TranslateString(
-            478,
-            'Ticket purchases are final. Your CAKE cannot be returned to you after buying tickets.',
-          )}
-        </Announce>
-        <Final>{TranslateString(460, `You will spend: ${cakeCosts(val)} CAKE`)}</Final>
+        <Announce>{'Ticket purchases are final. Your CAKE cannot be returned to you after buying tickets.'}</Announce>
+        <Final>{`You will spend: ${cakeCosts(val)} CAKE`}</Final>
       </div>
       <ModalActions>
         <Button fullWidth variant="secondary" onClick={onDismiss}>
-          {TranslateString(462, 'Cancel')}
+          {'Cancel'}
         </Button>
         <Button
           id="lottery-buy-complete"
@@ -108,7 +101,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
             onDismiss()
           }}
         >
-          {pendingTx ? TranslateString(488, 'Pending Confirmation') : TranslateString(464, 'Confirm')}
+          {pendingTx ? 'Pending Confirmation' : 'Confirm'}
         </Button>
       </ModalActions>
     </Modal>

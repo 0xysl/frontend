@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link, Text } from 'uikit'
 import { IfoStatus } from 'config/constants/types'
 import getTimePeriods from 'utils/getTimePeriods'
-import useI18n from 'hooks/useI18n'
 
 export interface IfoCardTimeProps {
   isLoading: boolean
@@ -29,19 +28,18 @@ const Countdown = styled.div`
 `
 
 const IfoCardTime: React.FC<IfoCardTimeProps> = ({ isLoading, status, secondsUntilStart, secondsUntilEnd, block }) => {
-  const TranslateString = useI18n()
   const countdownToUse = status === 'coming_soon' ? secondsUntilStart : secondsUntilEnd
   const timeUntil = getTimePeriods(countdownToUse)
   const suffix = status === 'coming_soon' ? 'start' : 'finish'
 
   if (isLoading) {
-    return <Details>{TranslateString(656, 'Loading...')}</Details>
+    return <Details>{'Loading...'}</Details>
   }
 
   if (countdownToUse <= 0) {
     return (
       <Details>
-        <Text bold>{TranslateString(388, 'Finished!')}</Text>
+        <Text bold>{'Finished!'}</Text>
       </Details>
     )
   }

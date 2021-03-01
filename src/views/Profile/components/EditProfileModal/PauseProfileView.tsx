@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import { useDispatch } from 'react-redux'
 import { useProfile, useToast } from 'state/hooks'
 import { fetchProfile } from 'state/profile'
@@ -16,7 +16,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const [isConfirming, setIsConfirming] = useState(false)
   const { profile } = useProfile()
   const { numberCakeToReactivate } = useGetProfileCosts()
-  const TranslateString = useI18n()
+
   const pancakeProfileContract = useProfileContract()
   const { account } = useWallet()
   const { toastSuccess, toastError } = useToast()
@@ -51,21 +51,20 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   return (
     <>
       <Text as="p" color="failure" mb="24px">
-        {TranslateString(999, 'This will suspend your profile and send your Collectible back to your wallet')}
+        {'This will suspend your profile and send your Collectible back to your wallet'}
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {TranslateString(
-          999,
-          "While your profile is suspended, you won't be able to earn points, but your achievements and points will stay associated with your profile",
-        )}
+        {
+          "While your profile is suspended, you won't be able to earn points, but your achievements and points will stay associated with your profile"
+        }
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {TranslateString(999, `Cost to reactivate in future: ${getBalanceNumber(numberCakeToReactivate)} CAKE`)}
+        {`Cost to reactivate in future: ${getBalanceNumber(numberCakeToReactivate)} CAKE`}
       </Text>
       <label htmlFor="acknowledgement" style={{ cursor: 'pointer', display: 'block', marginBottom: '24px' }}>
         <Flex alignItems="center">
           <Checkbox id="acknowledgement" checked={isAcknowledged} onChange={handleChange} scale="sm" />
-          <Text ml="8px">{TranslateString(999, 'I understand')}</Text>
+          <Text ml="8px">{'I understand'}</Text>
         </Flex>
       </label>
       <Button
@@ -76,10 +75,10 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
         onClick={handleDeactivateProfile}
         mb="8px"
       >
-        {TranslateString(999, 'Confirm')}
+        {'Confirm'}
       </Button>
       <Button variant="text" fullWidth onClick={onDismiss}>
-        {TranslateString(999, 'Close Window')}
+        {'Close Window'}
       </Button>
     </>
   )

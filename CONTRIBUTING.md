@@ -46,10 +46,10 @@ _In order for the Crowdin API queries to work - you will need `REACT_APP_CROWDIN
 A hook expose the function you need to translate content.
 
 ```
-import useI18n from 'hooks/useI18n'
+
 
 ...
-const TranslateString = useI18n()
+
 ...
 
 TranslateString(id, 'fallback', data)

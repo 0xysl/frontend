@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button, LinkExternal, useModal } from 'uikit'
-import useI18n from 'hooks/useI18n'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import useTickets from 'hooks/useTickets'
 import UnlockButton from 'components/UnlockButton'
@@ -29,7 +28,6 @@ const ExternalLinkWrap = styled(LinkExternal)`
 `
 
 const TicketCard: React.FC<{ contractLink?: string; lotteryNumber?: number }> = ({ contractLink, lotteryNumber }) => {
-  const TranslateString = useI18n()
   const tickets = useTickets(lotteryNumber)
   const ticketsLength = tickets.length
   const [onPresentMyTickets] = useModal(<MyTicketsModal myTicketNumbers={tickets} from="buy" />)
@@ -47,11 +45,11 @@ const TicketCard: React.FC<{ contractLink?: string; lotteryNumber?: number }> = 
     <Wrapper>
       <div>
         <Button disabled={ticketsLength === 0} onClick={onPresentMyTickets} fullWidth>
-          {TranslateString(432, 'View your tickets')}
+          {'View your tickets'}
         </Button>
       </div>
       <div>
-        <ExternalLinkWrap href={contractLink}>{TranslateString(356, 'View on BscScan')}</ExternalLinkWrap>
+        <ExternalLinkWrap href={contractLink}>{'View on BscScan'}</ExternalLinkWrap>
       </div>
     </Wrapper>
   )

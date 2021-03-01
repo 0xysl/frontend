@@ -3,7 +3,6 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { Button, Modal } from 'uikit'
 import ModalActions from 'components/ModalActions'
 import TokenInput from '../../../components/TokenInput'
-import useI18n from '../../../hooks/useI18n'
 import { getFullDisplayBalance } from '../../../utils/formatBalance'
 
 interface WithdrawModalProps {
@@ -16,7 +15,7 @@ interface WithdrawModalProps {
 const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max, tokenName = '' }) => {
   const [val, setVal] = useState('')
   const [pendingTx, setPendingTx] = useState(false)
-  const TranslateString = useI18n()
+
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max)
   }, [max])
@@ -43,7 +42,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
       />
       <ModalActions>
         <Button variant="secondary" onClick={onDismiss}>
-          {TranslateString(462, 'Cancel')}
+          {'Cancel'}
         </Button>
         <Button
           disabled={pendingTx}
@@ -54,7 +53,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
             onDismiss()
           }}
         >
-          {pendingTx ? TranslateString(488, 'Pending Confirmation') : TranslateString(464, 'Confirm')}
+          {pendingTx ? 'Pending Confirmation' : 'Confirm'}
         </Button>
       </ModalActions>
     </Modal>

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Heading, Card, CardBody, Button, useModal } from 'uikit'
 import { getCakeAddress } from 'utils/addressHelpers'
 import { getBalanceNumber } from 'utils/formatBalance'
-import useI18n from 'hooks/useI18n'
 import useGetLotteryHasDrawn from 'hooks/useGetLotteryHasDrawn'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { useMultiClaimLottery } from 'hooks/useBuyLottery'
@@ -46,7 +45,6 @@ const Actions = styled.div`
 const FarmedStakingCard = () => {
   const lotteryHasDrawn = useGetLotteryHasDrawn()
   const [requesteClaim, setRequestedClaim] = useState(false)
-  const TranslateString = useI18n()
   const allowance = useLotteryAllowance()
   const [onPresentApprove] = useModal(<PurchaseWarningModal />)
   const { claimAmount } = useTotalClaim()
@@ -71,13 +69,13 @@ const FarmedStakingCard = () => {
     if (!allowance.toNumber()) {
       return (
         <Button fullWidth disabled={requestedApproval} onClick={handleApprove}>
-          {TranslateString(494, 'Approve CAKE')}
+          {'Approve CAKE'}
         </Button>
       )
     }
     return (
       <Button id="dashboard-buy-tickets" variant="secondary" onClick={onPresentBuy} disabled={lotteryHasDrawn}>
-        {TranslateString(558, 'Buy Tickets')}
+        {'Buy Tickets'}
       </Button>
     )
   }
@@ -88,15 +86,15 @@ const FarmedStakingCard = () => {
     <StyledLotteryCard>
       <CardBody>
         <Heading size="xl" mb="24px">
-          {TranslateString(550, 'Your Lottery Winnings')}
+          {'Your Lottery Winnings'}
         </Heading>
         <CardImage src="/images/ticket.svg" alt="cake logo" width={64} height={64} />
         <Block>
-          <Label>{TranslateString(552, 'CAKE to Collect')}:</Label>
+          <Label>{'CAKE to Collect'}:</Label>
           <CakeWinnings />
         </Block>
         <Block>
-          <Label>{TranslateString(554, 'Total jackpot this round')}:</Label>
+          <Label>{'Total jackpot this round'}:</Label>
           <LotteryJackpot />
         </Block>
         <Actions>
@@ -106,7 +104,7 @@ const FarmedStakingCard = () => {
             onClick={handleClaim}
             style={{ marginRight: '8px' }}
           >
-            {TranslateString(556, 'Collect Winnings')}
+            {'Collect Winnings'}
           </Button>
           {renderLotteryTicketButtonBuyOrApprove()}
         </Actions>

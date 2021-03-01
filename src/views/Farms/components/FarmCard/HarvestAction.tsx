@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { Button, Flex, Heading } from 'uikit'
-import useI18n from 'hooks/useI18n'
 import { useHarvest } from 'hooks/useHarvest'
 import { getBalanceNumber } from 'utils/formatBalance'
 
@@ -11,7 +10,6 @@ interface FarmCardActionsProps {
 }
 
 const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
-  const TranslateString = useI18n()
   const [pendingTx, setPendingTx] = useState(false)
   const { onReward } = useHarvest(pid)
 
@@ -29,7 +27,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
           setPendingTx(false)
         }}
       >
-        {TranslateString(562, 'Harvest')}
+        {'Harvest'}
       </Button>
     </Flex>
   )

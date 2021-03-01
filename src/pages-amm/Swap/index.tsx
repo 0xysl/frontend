@@ -31,7 +31,6 @@ import { LinkStyledButton } from 'components/Shared'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 import Loader from 'components/Loader'
-import { TranslateString } from 'utils/translateTextHelpers'
 import PageHeader from 'components/PageHeader'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import AppBody from '../AppBody'
@@ -287,11 +286,7 @@ const Swap = () => {
           <CardBody>
             <AutoColumn gap="md">
               <CurrencyInputPanel
-                label={
-                  independentField === Field.OUTPUT && !showWrap && trade
-                    ? 'From (estimated)'
-                    : TranslateString(76, 'From')
-                }
+                label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)' : 'From'}
                 value={formattedAmounts[Field.INPUT]}
                 showMaxButton={!atMaxAmountInput}
                 currency={currencies[Field.INPUT]}
@@ -326,9 +321,7 @@ const Swap = () => {
               <CurrencyInputPanel
                 value={formattedAmounts[Field.OUTPUT]}
                 onUserInput={handleTypeOutput}
-                label={
-                  independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : TranslateString(80, 'To')
-                }
+                label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
                 showMaxButton={false}
                 currency={currencies[Field.OUTPUT]}
                 onCurrencySelect={handleOutputSelect}

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Heading, Text } from 'uikit'
 import Container from 'components/layout/Container'
-import useI18n from 'hooks/useI18n'
 
 const Title = styled(Heading).attrs({ as: 'h1', size: 'xl' })`
   color: ${({ theme }) => theme.colors.secondary};
@@ -22,13 +21,11 @@ const StyledHero = styled.div`
   margin-bottom: 32px;
 `
 const Hero = () => {
-  const TranslateString = useI18n()
-
   return (
     <StyledHero>
       <Container>
-        <Title>{TranslateString(500, 'IFO: Initial Farm Offerings')}</Title>
-        <Blurb>{TranslateString(502, 'Buy new tokens with a brand new token sale model.')}</Blurb>
+        <Title>{'IFO: Initial Farm Offerings'}</Title>
+        <Blurb>{'Buy new tokens with a brand new token sale model.'}</Blurb>
       </Container>
     </StyledHero>
   )

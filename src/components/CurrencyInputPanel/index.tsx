@@ -11,7 +11,6 @@ import { RowBetween } from '../Row'
 import { Input as NumericalInput } from '../NumericalInput'
 import { useActiveWeb3React } from '../../hooks'
 import TranslatedText from '../TranslatedText'
-import { TranslateString } from '../../utils/translateTextHelpers'
 
 const InputRow = styled.div<{ selected: boolean }>`
   display: flex;
@@ -97,7 +96,7 @@ export default function CurrencyInputPanel({
   onUserInput,
   onMax,
   showMaxButton,
-  label = TranslateString(132, 'Input'),
+  label = 'Input',
   onCurrencySelect,
   currency,
   disableCurrencySelect = false,

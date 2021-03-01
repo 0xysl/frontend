@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading, Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
 import Container from 'components/layout/Container'
 import LotteryProgress from './LotteryProgress'
 
@@ -64,15 +63,13 @@ const RightWrapper = styled.div`
 `
 
 const Hero = () => {
-  const TranslateString = useI18n()
-
   return (
     <StyledHero>
       <StyledContainer>
         <LeftWrapper>
-          <Title>{TranslateString(708, 'The CAKE Lottery')}</Title>
-          <Blurb>{TranslateString(710, 'Buy tickets with CAKE')}</Blurb>
-          <Blurb>{TranslateString(712, 'Win if 2, 3, or 4 of your ticket numbers match!')}</Blurb>
+          <Title>{'The CAKE Lottery'}</Title>
+          <Blurb>{'Buy tickets with CAKE'}</Blurb>
+          <Blurb>{'Win if 2, 3, or 4 of your ticket numbers match!'}</Blurb>
         </LeftWrapper>
         <RightWrapper>
           <LotteryProgress />

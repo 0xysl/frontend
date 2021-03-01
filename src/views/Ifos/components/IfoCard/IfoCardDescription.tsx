@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
 
 export interface IfoCardDescriptionProps {
   defaultIsOpen?: boolean
@@ -40,16 +39,13 @@ const Description = styled(Text)<{ isOpen: boolean }>`
 
 const IfoCardDescription: React.FC<IfoCardDescriptionProps> = ({ defaultIsOpen = true, description }) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpen)
-  const TranslateString = useI18n()
 
   const handleClick = () => setIsOpen(!isOpen)
 
   return (
     <StyledIfoCardDescription>
       <Divider />
-      <ToggleButton onClick={handleClick}>
-        {isOpen ? TranslateString(1066, 'Hide') : TranslateString(1064, 'Show')}
-      </ToggleButton>
+      <ToggleButton onClick={handleClick}>{isOpen ? 'Hide' : 'Show'}</ToggleButton>
       <Description isOpen={isOpen}>{description}</Description>
     </StyledIfoCardDescription>
   )

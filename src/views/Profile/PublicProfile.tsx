@@ -14,7 +14,7 @@ import {
   OpenNewIcon,
   BlockIcon,
 } from 'uikit'
-import useI18n from 'hooks/useI18n'
+
 import { useProfile } from 'state/hooks'
 import Menu from './components/Menu'
 import CardHeader from './components/CardHeader'
@@ -80,7 +80,6 @@ const Section = styled.div`
 const PublicProfile = () => {
   const { account } = useWallet()
   const { profile } = useProfile()
-  const TranslateString = useI18n()
 
   if (!account) {
     return <WalletNotConnected />
@@ -108,20 +107,20 @@ const PublicProfile = () => {
             <Status>
               {profile.isActive ? (
                 <Tag startIcon={<CheckmarkCircleIcon width="18px" />} outline>
-                  {TranslateString(698, 'Active')}
+                  {'Active'}
                 </Tag>
               ) : (
                 <Tag variant="failure" startIcon={<BlockIcon width="18px" />} outline>
-                  {TranslateString(999, 'Paused')}
+                  {'Paused'}
                 </Tag>
               )}
             </Status>
           </CardHeader>
           <CardBody>
-            <StatBox icon={PrizeIcon} title={profile.points} subtitle={TranslateString(999, 'Points')} mb="24px" />
+            <StatBox icon={PrizeIcon} title={profile.points} subtitle={'Points'} mb="24px" />
             <Section>
               <Heading as="h4" size="md" mb="16px">
-                {TranslateString(1092, 'Achievements')}
+                {'Achievements'}
               </Heading>
               <AchievementsList />
             </Section>

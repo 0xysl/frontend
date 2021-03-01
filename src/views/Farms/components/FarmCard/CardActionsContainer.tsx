@@ -7,7 +7,6 @@ import { getAddress } from 'utils/addressHelpers'
 import { Button, Flex, Text } from 'uikit'
 import { Farm } from 'state/types'
 import { useFarmFromSymbol, useFarmUser } from 'state/hooks'
-import useI18n from 'hooks/useI18n'
 import UnlockButton from 'components/UnlockButton'
 import { useApprove } from 'hooks/useApprove'
 import StakeAction from './StakeAction'
@@ -28,7 +27,6 @@ interface FarmCardActionsProps {
 }
 
 const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, addLiquidityUrl }) => {
-  const TranslateString = useI18n()
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { pid, lpAddresses } = useFarmFromSymbol(farm.lpSymbol)
   const { allowance, tokenBalance, stakedBalance, earnings } = useFarmUser(pid)
@@ -63,7 +61,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
       />
     ) : (
       <Button mt="8px" fullWidth disabled={requestedApproval} onClick={handleApprove}>
-        {TranslateString(758, 'Approve Contract')}
+        {'Approve Contract'}
       </Button>
     )
   }
@@ -76,7 +74,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
           CAKE
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
-          {TranslateString(1072, 'Earned')}
+          {'Earned'}
         </Text>
       </Flex>
       <HarvestAction earnings={earnings} pid={pid} />
@@ -85,7 +83,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account, 
           {lpName}
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
-          {TranslateString(1074, 'Staked')}
+          {'Staked'}
         </Text>
       </Flex>
       {!account ? <UnlockButton mt="8px" fullWidth /> : renderApprovalOrStakeButton()}
