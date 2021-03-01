@@ -1,5 +1,5 @@
 import { ChainId, Pair, Token } from '@pancakeswap-libs/sdk'
-import flatMap from 'lodash/flatmap'
+import flatMap from 'lodash/flatMap'
 import { useCallback, useMemo } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from '../../constants'

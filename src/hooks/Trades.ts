@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, Pair, Token, Trade } from '@pancakeswap-libs/sdk'
-import flatMap from 'lodash/flatmap'
+import flatMap from 'lodash/flatMap'
 import { useMemo } from 'react'
 
 import { BASES_TO_CHECK_TRADES_AGAINST, CUSTOM_BASES } from '../constants'

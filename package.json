@@ -69,6 +69,7 @@
     "react-transition-group": "^4.4.1",
     "react-virtualized-auto-sizer": "^1.0.4",
     "react-window": "^1.8.6",
+    "rebass": "^4.0.7",
     "redux-localstorage-simple": "^2.4.0",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5",
