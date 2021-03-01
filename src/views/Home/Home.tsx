@@ -11,7 +11,6 @@ import EarnAssetCard from 'views/Home/components/EarnAssetCard'
 import WinCard from 'views/Home/components/WinCard'
 import { Heading, Text, BaseLayout } from '../../uikit/index'
 
-
 const Hero = styled.div`
   align-items: center;
   display: flex;
@@ -88,11 +87,6 @@ const Home: React.FC = () => {
           <FarmStakingCard />
           <LotteryCard />
         </Cards>
-        {/* <CTACards>
-          <EarnAPYCard />
-          <EarnAssetCard />
-          <WinCard />
-        </CTACards> */}
         <Cards>
           <CakeStats />
           <TotalValueLockedCard />

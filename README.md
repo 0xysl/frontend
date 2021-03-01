@@ -1,6 +1,7 @@
 # 🥞 Pancake Frontend
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7bebf1a3-be7b-4165-afd1-446256acd5e3/deploy-status)](https://app.netlify.com/sites/pancake-prod/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ae2459b7-4203-49bb-a114-f42867d8cd47/deploy-status)](https://app.netlify.com/sites/pensive-carson-20f19e/deploys)
+
 
 This project contains the main features of the pancake application.
 
