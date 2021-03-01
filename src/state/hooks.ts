@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { kebabCase } from 'lodash'
+import kebabCase from 'lodash/kebabCase'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Toast, toastTypes } from 'uikit'
 import { useSelector, useDispatch } from 'react-redux'

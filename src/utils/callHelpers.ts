@@ -1,10 +1,8 @@
 import BigNumber from 'bignumber.js'
-import { ethers } from 'ethers'
+import { MaxUint256 } from '@ethersproject/constants'
 
 export const approve = async (lpContract, masterChefContract, account) => {
-  return lpContract.methods
-    .approve(masterChefContract.options.address, ethers.constants.MaxUint256)
-    .send({ from: account })
+  return lpContract.methods.approve(masterChefContract.options.address, MaxUint256).send({ from: account })
 }
 
 export const stake = async (masterChefContract, pid, amount, account) => {

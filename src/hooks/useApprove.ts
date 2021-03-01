@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Contract } from 'web3-eth-contract'
-import { ethers } from 'ethers'
+import { MaxUint256 } from '@ethersproject/constants'
 import { useDispatch } from 'react-redux'
 import { updateUserAllowance, fetchFarmUserDataAsync } from 'state/actions'
 import { approve } from 'utils/callHelpers'
@@ -68,9 +68,7 @@ export const useIfoApprove = (tokenContract: Contract, spenderAddress: string) =
   const { account } = useWallet()
   const onApprove = useCallback(async () => {
     try {
-      const tx = await tokenContract.methods
-        .approve(spenderAddress, ethers.constants.MaxUint256)
-        .send({ from: account })
+      const tx = await tokenContract.methods.approve(spenderAddress, MaxUint256).send({ from: account })
       return tx
     } catch {
       return false
