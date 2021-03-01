@@ -23,9 +23,9 @@ const useGetProfileCosts = () => {
         ])
 
         setCosts({
-          numberCakeToReactivate: new BigNumber(numberCakeToReactivate as string),
-          numberCakeToRegister: new BigNumber(numberCakeToRegister as string),
-          numberCakeToUpdate: new BigNumber(numberCakeToUpdate as string),
+          numberCakeToReactivate: new BigNumber(numberCakeToReactivate as any),
+          numberCakeToRegister: new BigNumber(numberCakeToRegister as any),
+          numberCakeToUpdate: new BigNumber(numberCakeToUpdate as any),
         })
       } catch (error) {
         toastError('Error', 'Could not retrieve CAKE costs for profile')

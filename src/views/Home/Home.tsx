@@ -1,15 +1,12 @@
+import Page from 'components/layout/Page'
+import useI18n from 'hooks/useI18n'
 import React from 'react'
 import styled from 'styled-components'
-import useI18n from 'hooks/useI18n'
-import Page from 'components/layout/Page'
+import CakeStats from 'views/Home/components/CakeStats'
 import FarmStakingCard from 'views/Home/components/FarmStakingCard'
 import LotteryCard from 'views/Home/components/LotteryCard'
-import CakeStats from 'views/Home/components/CakeStats'
 import TotalValueLockedCard from 'views/Home/components/TotalValueLockedCard'
-import EarnAPYCard from 'views/Home/components/EarnAPYCard'
-import EarnAssetCard from 'views/Home/components/EarnAssetCard'
-import WinCard from 'views/Home/components/WinCard'
-import { Heading, Text, BaseLayout } from '../../uikit/index'
+import { BaseLayout, Heading, Text } from '../../uikit/index'
 
 const Hero = styled.div`
   align-items: center;

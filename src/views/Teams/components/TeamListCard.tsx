@@ -6,7 +6,7 @@ import useI18n from 'hooks/useI18n'
 import { Team } from 'config/constants/types'
 
 interface TeamCardProps {
-  rank: number
+  rank: number,
   team: Team
 }
 
