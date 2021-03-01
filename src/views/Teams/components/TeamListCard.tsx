@@ -2,11 +2,10 @@ import React from 'react'
 import styled, { DefaultTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Button, Card, CommunityIcon, Flex, Heading, PrizeIcon, Text } from 'uikit'
-import useI18n from 'hooks/useI18n'
 import { Team } from 'config/constants/types'
 
 interface TeamCardProps {
-  rank: number,
+  rank: number
   team: Team
 }
 
@@ -91,7 +90,6 @@ const StyledTeamCard = styled(Card)`
 `
 
 const TeamCard: React.FC<TeamCardProps> = ({ rank, team }) => {
-  const TranslateString = useI18n()
   const avatar = <Avatar src={`/images/teams/${team.images.md}`} alt="team avatar" />
 
   return (

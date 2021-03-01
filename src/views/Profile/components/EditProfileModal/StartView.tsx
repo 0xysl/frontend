@@ -6,7 +6,6 @@ import { Button, Flex, Text, InjectedModalProps } from 'uikit'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 import { getPancakeProfileAddress } from 'utils/addressHelpers'
 import { useCake } from 'hooks/useContract'
-import useI18n from 'hooks/useI18n'
 import { useProfile } from 'state/hooks'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import useHasCakeBalance from 'hooks/useHasCakeBalance'
@@ -35,7 +34,6 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
   const { profile } = useProfile()
   const { numberCakeToUpdate, numberCakeToReactivate } = useGetProfileCosts()
   const hasMinimumCakeRequired = useHasCakeBalance(profile.isActive ? numberCakeToUpdate : numberCakeToReactivate)
-  const TranslateString = useI18n()
   const { account } = useWallet()
   const cakeContract = useCake()
   const cost = profile.isActive ? numberCakeToUpdate : numberCakeToReactivate
@@ -66,7 +64,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
       <Flex alignItems="center" style={{ height: '48px' }} justifyContent="center">
         <Text as="p" color="failure">
           {!hasMinimumCakeRequired &&
-            TranslateString(999, `${getFullDisplayBalance(numberCakeToUpdate)} CAKE required to change profile pic`)}
+            {`${getFullDisplayBalance(numberCakeToUpdate)} CAKE required to change profile pic`}
         </Text>
       </Flex>
       {profile.isActive ? (
@@ -77,7 +75,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
             onClick={needsApproval === true ? goToApprove : goToChange}
             disabled={!hasMinimumCakeRequired || needsApproval === null}
           >
-            {TranslateString(999, 'Change Profile Pic')}
+            {'Change Profile Pic'}
           </Button>
           <DangerOutline onClick={goToRemove}>{TranslateString(999, 'Remove Profile Pic')}</DangerOutline>
         </>
@@ -88,11 +86,11 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
           onClick={needsApproval === true ? goToApprove : goToChange}
           disabled={!hasMinimumCakeRequired || needsApproval === null}
         >
-          {TranslateString(999, 'Reactivate Profile')}
+          {'Reactivate Profile'}
         </Button>
       )}
       <Button variant="text" fullWidth onClick={onDismiss}>
-        {TranslateString(999, 'Close Window')}
+        {'Close Window'}
       </Button>
     </Flex>
   )

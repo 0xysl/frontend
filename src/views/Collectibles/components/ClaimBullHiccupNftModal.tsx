@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Modal, Text, Button, Flex, InjectedModalProps } from 'uikit'
 import history from 'routerHistory'
-import { delay } from 'lodash'
-import useI18n from 'hooks/useI18n'
+import { delay } from 'lodash/delay'
 import confetti from 'canvas-confetti'
 import nftList from 'config/constants/nfts'
 import { BULL_NFT, HICCUP_NFT } from '../hooks/useGetBullHiccupClaimableStatus'
@@ -52,11 +51,8 @@ const ClaimBullHiccupNftModal: React.FC<ClaimBullHiccupNftModalProps> = ({
   isHiccupClaimable,
   onDismiss,
 }) => {
-  const TranslateString = useI18n()
   const collectibleMessage =
-    isBullClaimable && isHiccupClaimable
-      ? TranslateString(999, 'You won two Collectibles!')
-      : TranslateString(999, 'You won a collectible!')
+    isBullClaimable && isHiccupClaimable ? 'You won two Collectibles!' : 'You won a collectible!'
 
   // This is required because the modal exists outside the Router
   const handleClick = () => {
@@ -69,13 +65,13 @@ const ClaimBullHiccupNftModal: React.FC<ClaimBullHiccupNftModalProps> = ({
   }, [])
 
   return (
-    <Modal title={TranslateString(999, 'Congratulations!')} onDismiss={onDismiss}>
+    <Modal title={'Congratulations!'} onDismiss={onDismiss}>
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
         {renderNftPreview(isBullClaimable, isHiccupClaimable)}
         <Text bold color="secondary" fontSize="24px" mb="24px">
           {collectibleMessage}
         </Text>
-        <Button onClick={handleClick}>{TranslateString(999, 'Claim now')}</Button>
+        <Button onClick={handleClick}>{'Claim now'}</Button>
       </Flex>
     </Modal>
   )

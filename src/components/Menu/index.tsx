@@ -1,14 +1,11 @@
 import React, { useContext } from 'react'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { allLanguages } from 'config/localisation/languageCodes'
-import { LanguageContext } from 'contexts/Localisation/languageContext'
 import { usePriceCakeBusd, useProfile } from 'state/hooks'
 import { Menu as UikitMenu } from '../../uikit/index'
 import config from './config'
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
-  const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const cakePriceUsd = usePriceCakeBusd()
   const { profile } = useProfile()
 
@@ -17,9 +14,7 @@ const Menu = (props) => {
       account={account}
       login={connect}
       logout={reset}
-      currentLang={selectedLanguage && selectedLanguage.code}
-      langs={allLanguages}
-      setLang={setSelectedLanguage}
+      currentLang={'EN'}
       cakePriceUsd={cakePriceUsd.toNumber()}
       links={config}
       profile={{

@@ -27,7 +27,6 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.13.0",
     "@binance-chain/bsc-use-wallet": "^0.8.1",
-    "@crowdin/crowdin-api-client": "^1.10.4",
     "@ethersproject/abi": "^5.0.7",
     "@ethersproject/experimental": "^5.0.1",
     "@pancakeswap-libs/sdk": "^1.0.1",

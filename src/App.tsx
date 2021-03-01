@@ -72,7 +72,7 @@ const App: React.FC = () => {
             <Route path="/ifo">
               <Ifos />
             </Route>
-            <Route path="/swap">
+            <Route path="/exchange">
               <Swap />
             </Route>
             <Route path="/collectibles">

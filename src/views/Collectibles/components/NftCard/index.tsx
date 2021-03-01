@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Card, CardBody, Heading, Tag, Button, ChevronUpIcon, ChevronDownIcon, Text, CardFooter, useModal } from 'uikit'
 import { useProfile } from 'state/hooks'
-import useI18n from 'hooks/useI18n'
 import { Nft } from 'config/constants/types'
 import InfoRow from '../InfoRow'
 import TransferNftModal from '../TransferNftModal'
@@ -39,7 +38,6 @@ const InfoBlock = styled.div`
 
 const NftCard: React.FC<NftCardProps> = ({ nft, onSuccess, canClaim = false, tokenIds = [] }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const TranslateString = useI18n()
   const { profile } = useProfile()
   const { bunnyId, name, description } = nft
   const walletOwnsNft = tokenIds.length > 0
@@ -60,29 +58,29 @@ const NftCard: React.FC<NftCardProps> = ({ nft, onSuccess, canClaim = false, tok
           <Heading>{name}</Heading>
           {walletOwnsNft && (
             <Tag outline variant="secondary">
-              {TranslateString(999, 'In Wallet')}
+              {'In Wallet'}
             </Tag>
           )}
           {profile?.nft?.bunnyId === bunnyId && (
             <Tag outline variant="success">
-              {TranslateString(999, 'Profile Pic')}
+              {'Profile Pic'}
             </Tag>
           )}
         </Header>
         {canClaim && (
           <Button fullWidth mt="24px" onClick={onPresentClaimModal}>
-            {TranslateString(999, 'Claim this NFT')}
+            {'Claim this NFT'}
           </Button>
         )}
         {walletOwnsNft && (
           <Button fullWidth variant="secondary" mt="24px" onClick={onPresentTransferModal}>
-            {TranslateString(999, 'Transfer')}
+            {'Transfer'}
           </Button>
         )}
       </CardBody>
       <CardFooter p="0">
         <DetailsButton endIcon={<Icon width="24px" color="primary" />} onClick={handleClick}>
-          {TranslateString(658, 'Details')}
+          {'Details'}
         </DetailsButton>
         {isOpen && (
           <InfoBlock>

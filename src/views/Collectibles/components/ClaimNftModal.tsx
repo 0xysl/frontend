@@ -5,7 +5,6 @@ import { useBunnySpecialContract } from 'hooks/useContract'
 import { useToast } from 'state/hooks'
 import { Button, InjectedModalProps, Modal, Text, Flex } from 'uikit'
 import { Nft } from 'config/constants/types'
-import useI18n from 'hooks/useI18n'
 
 interface ClaimNftModalProps extends InjectedModalProps {
   nft: Nft
@@ -24,7 +23,6 @@ const Actions = styled.div`
 
 const ClaimNftModal: React.FC<ClaimNftModalProps> = ({ nft, onSuccess, onDismiss }) => {
   const [isConfirming, setIsConfirming] = useState(false)
-  const TranslateString = useI18n()
   const { account } = useWallet()
   const { toastError, toastSuccess } = useToast()
   const bunnySpecialContract = useBunnySpecialContract()
@@ -49,19 +47,19 @@ const ClaimNftModal: React.FC<ClaimNftModalProps> = ({ nft, onSuccess, onDismiss
   }
 
   return (
-    <Modal title={TranslateString(999, 'Claim Collectible')} onDismiss={onDismiss}>
+    <Modal title={'Claim Collectible'} onDismiss={onDismiss}>
       <ModalContent>
         <Flex alignItems="center" mb="8px" justifyContent="space-between">
-          <Text>{TranslateString(626, 'You will receive')}:</Text>
+          <Text>{'You will receive'}:</Text>
           <Text bold>{`1x "${nft.name}" Collectible`}</Text>
         </Flex>
       </ModalContent>
       <Actions>
         <Button fullWidth variant="secondary" onClick={onDismiss}>
-          {TranslateString(462, 'Cancel')}
+          {'Cancel'}
         </Button>
         <Button fullWidth onClick={handleConfirm} disabled={!account || isConfirming}>
-          {TranslateString(464, 'Confirm')}
+          {'Confirm'}
         </Button>
       </Actions>
     </Modal>
