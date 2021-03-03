@@ -9,9 +9,6 @@ import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
 
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/cake-bg.svg');
-  background-repeat: no-repeat;
-  background-position: top right;
   min-height: 376px;
 `
 
@@ -69,6 +66,7 @@ const FarmedStakingCard = () => {
         <Actions>
           {account ? (
             <Button
+              className="animated"
               id="harvest-all"
               disabled={balancesWithValue.length <= 0 || pendingTx}
               onClick={harvestAllFarms}
